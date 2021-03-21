@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Display Users</title>
+    </head>
+    <body>
+        <div>There are <%=Object.keys(userList).length%> users.</div>
+        <table>
+            <thead>
+                <tr><th>Name</th><th>User Name</th><th>Email Address</th></tr>
+            </thead>
+            <tbody>    
+        <% userList.forEach(function (user) { %>
+            <tr><td><%=user.firstName%> <%=user.lastName%></td><td><%=user.userName%></td><td><%=user.email%></td></tr>
+        <%})%>
+            </tbody>
+        </table>
+        <form action="/logout" method="get">
+            <input type="submit" id="logout" name="logout" value="Logout" />
+        </form>
+    </body>
+</html>

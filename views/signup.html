@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Create User</title>
+    </head>
+    <body>
+        <div>
+            <form action="/user" method="post">
+                <h1>Create User</h1>
+                <input type="text" name="firstName" id="firstName" placeholder="First Name" required />
+                <input type="text" name="lastName" id="lastName" placeholder="Last Name" required />
+                <input type="email" name="email" id="email" placeholder="Email" required />
+                <input type="text" name="userName" id="userName" placeholder="User Name" required/>
+                <input type="password" name="password" id="password" placeholder="Password" required/>
+                <input type="submit" id="submitDetails" name="submitDetails" value="Submit" />
+            </form>
+            <form action="/logout" method="get">
+                <input type="submit" id="cancel" name="cancel" value="Cancel" />
+            </form>
+        </div>
+    </body>
+</html>
