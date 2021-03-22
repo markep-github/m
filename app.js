@@ -85,6 +85,7 @@ app.use(session({
     saveUninitialized: false,
     cookie: { secure: false }
 }));
+
 app.use(passport.initialize());
 app.use(passport.session());
 
@@ -146,8 +147,9 @@ app.post('/login',function(req,res,next) {
             }
             return res.redirect('/login'); 
         }
-        req.login(user,function(err) {
+        req.logIn(user,function(err) {
             if (logging) console.log("REDIRECT ERROR:"+err);
+            req.session.user = user;
             res.redirect('/users');
         });
     })(req, res, next);
@@ -162,7 +164,10 @@ app.get('/logout',
     });
 });
 app.get('/users',function(req,res) {
-    if (logging) console.log("AUTHENTICATE: "+req.isAuthenticated());
+    if (logging) {
+        console.log("AUTHENTICATE: "+req.isAuthenticated());
+        if (typeof req.user != "undefined" && typeof req.user.userName != "undefined") console.log("USER: "+req.user.userName);
+    }
     User.find({},(error,result) => {
         if (logging) console.log("RESULT: "+result);
         if (result) {
