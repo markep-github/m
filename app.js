@@ -3,9 +3,10 @@ var app = express();
 var path = require('path');
 var loggedInUser = "";
 var logging = true;
+const port = process.env.PORT || 3001;
 
-app.listen(3000,() => {
-    if (logging) console.log("Sever started at port 3000");
+app.listen(port,() => {
+    if (logging) console.log("Sever started at port "+port);
 })
 
 // Setup MongoDB database
