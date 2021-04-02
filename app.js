@@ -1,9 +1,23 @@
-var express = require('express');
-var app = express();
-var path = require('path');
 var loggedInUser = "";
-var logging = true;
+const express = require('express');
+const fs = require('fs');
+const app = express();
+const path = require('path');
+const logging = false;
 const port = process.env.PORT || 3001;
+const user = process.env.MONGOUSER || "Admin";
+const password = process.env.MONGOPASSWORD || "Password";
+const server = process.env.MONGOSERVER || "127.0.0.1";
+const dbport = process.env.MONGOPORT || 27017;
+
+if (user == null || user == "" || password == null || password == "")  {
+    if (user == null || user == "") console.log("MongoDB username is not.");
+    if (password == null || password == "") console.log("MongoDB password is not.");
+    console.log("Aborting/Terminating application.");
+    process.exitCode = 1;
+    process.abort();
+}
+
 
 app.listen(port,() => {
     if (logging) console.log("Sever started at port "+port);
@@ -11,7 +25,14 @@ app.listen(port,() => {
 
 // Setup MongoDB database
 const mongoose = require('mongoose');
-mongoose.connect('mongodb://Admin:Password@127.0.0.1:27017/?authSource=admin&readPreference=primary&appname=MongoDB%20Compass&ssl=false',
+const url = 'mongodb://'+user+':'+password+'@'+server+':'+dbport+'/';
+const options = {
+    ssl: false,
+    readPreference: "primary",
+    authSource: "admin",
+    appname: "NodeJS-Login"
+};
+mongoose.connect(url,options,
     function() {
         if (logging) console.log("Connected to mongoDB")
     }
@@ -77,7 +98,7 @@ passport.use(new LocalStrategy({
 
 app.use(session({
     genid: function(req) {
-        if (logging) console.log(loggedInUser);
+        if (logging) console.log("Logged in user name: "+loggedInUser);
         return uid.sync(18)
     },
     store: new FileStore({retries:0}), 
@@ -103,6 +124,7 @@ app.use('/fonts',express.static(__dirname + '/fonts'));
 // Routes
 //
 app.post('/user',(req,res) => {
+    console.log("Creating user ");
     const user = new User({
         firstName : req.body.firstName,
         lastName : req.body.lastName,
@@ -119,7 +141,8 @@ app.post('/user',(req,res) => {
             console.log('Successfully created a new user');
             res.redirect('/');
         }).catch(error => {
-            // error
+            console.log('error: '+error);
+            res.status("123").send({errorMessage: error});
         })
     })
 });

@@ -33,5 +33,58 @@ form {
     margin-top:10px
 }
 .button {
-    width: 100px;
+    background-color: #dc1c23;
+    width: 200px;
+    color: #fff;
+    height: 33px;
+    font-size: 16px;
+    border-radius: 5px;
+    padding: 5px;
+    margin: 0;
+}
+.red {
+    background-color: #dc1c23;
+}
+.green {
+    background-color: green;
+}
+.mainlogin {
+    max-width: 400px;
+    border-radius: 15px;
+    margin: 20px auto 0 auto;
+}
+.inputfield{
+    width: calc(100% - 12px);
+    font-size: 16px;
+    border-radius: 5px;
+    background-color: #fff;
+    height: 25px;
+    border: 1px solid #696969;
+    padding: 5px;
+}
+.redbutton {
+    background-color: #dc1c23;
+    width: 100%;
+    color: #fff;
+    height: 33px;
+    font-size: 16px;
+    border-radius: 5px;
+    padding: 5px;
+    margin: 0;
+}
+.graybutton {
+    background-color: #696969;
+    width: 100%;
+    color: #fff;
+    height: 33px;
+    font-size: 16px;
+    border-radius: 5px;
+    padding: 5px;
+    margin: 0;
+}
+.table {
+    border-collapse: collapse;
+    width: 100%;
+    padding: 0;
+    border: 0;
 }

@@ -1,26 +1,50 @@
 <!DOCTYPE html>
 <html lang="en">
     <head>
+        <link rel="stylesheet" type="text/css" href="/css/style.css">
         <title>Login</title>
     </head>
     <body>
         <div>
-            <form action="/login" method="post">
-                <span>User Sign In</span>
-                <div data-validate="Please enter username">
-                    <input type="text" name="userName" id="userName" placeholder="Username">
-                </div>
-                <div data-validate="Please enter password">
-                    <input type="password" name="password" id="password" placeholder="Password">
-                </div>
-                <div>
-                    <button>Sign In</button>
-                </div>
+            <form action="/login" method="post" class="mainlogin">
+                <h2>NodeJS Demostration Application</h2>
+                <h3>
+                    Login based on user name and password along with a view (list) of users connectioning to a MongoDB nonsql database.
+                </h3>
+                <table class="table">
+                    <tr>
+                        <td colspan="2">
+                            <div data-validate="Please enter username">
+                                <input type="text" name="userName" id="userName" class="inputfield" placeholder="Enter in your user name.">
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td colspan="2">
+                            <div data-validate="Please enter password">
+                                <input type="password" name="password" id="password" class="inputfield" placeholder="Enter in your password.">
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <button class="redbutton">Sign In</button>
+                        </td>
+                    </tr>
+                </table>
             </form>
-            <form action="/createuser" method="get">
-                <div>
-                    <button>Create User</button>
-                </div>
+            <form action="/createuser" method="get" class="mainlogin" style="margin-top:0">
+                <table class="table">
+                    <tr>
+                        <td style="width:50%">
+                        <div>
+                            <button class="graybutton">Register</button>
+                        </div>
+                        </td>
+                        <td>
+                        </td>
+                    </tr>
+                </table>
             </form>
         </div>
     </body>

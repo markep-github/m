@@ -1,21 +1,56 @@
 <!DOCTYPE html>
 <html>
     <head>
+        <link rel="stylesheet" type="text/css" href="/css/style.css">
         <title>Create User</title>
     </head>
     <body>
         <div>
-            <form action="/user" method="post">
-                <h1>Create User</h1>
-                <input type="text" name="firstName" id="firstName" placeholder="First Name" required />
-                <input type="text" name="lastName" id="lastName" placeholder="Last Name" required />
-                <input type="email" name="email" id="email" placeholder="Email" required />
-                <input type="text" name="userName" id="userName" placeholder="User Name" required/>
-                <input type="password" name="password" id="password" placeholder="Password" required/>
-                <input type="submit" id="submitDetails" name="submitDetails" value="Submit" />
+            <form action="/user" method="post" class="mainlogin">
+                <h1 style="text-align: center;">Register User</h1>
+                <table class="table">
+                    <tr>
+                        <td colspan="2">
+                            <input type="text" name="firstName" id="firstName" placeholder="First Name" class="inputfield" required />
+                        </td>
+                    </tr>
+                    <tr>
+                        <td colspan="2">
+                            <input type="text" name="lastName" id="lastName" placeholder="Last Name" class="inputfield" required />
+                        </td>
+                    </tr>
+                    <tr>
+                        <td colspan="2">
+                            <input type="email" name="email" id="email" placeholder="Email" class="inputfield" required />
+                        </td>
+                    </tr>
+                    <tr>
+                        <td colspan="2">
+                            <input type="text" name="userName" id="userName" placeholder="User Name" class="inputfield" required/>
+                        </td>
+                    </tr>     
+                    <tr>
+                        <td colspan="2">
+                            <input type="password" name="password" id="password" placeholder="Password" class="inputfield" required/>
+                        </td>
+                    </tr>     
+                    <tr>
+                        <td colspan="2">                            
+                            <input type="submit" id="submitDetails" name="submitDetails" class="green button" style="width:100%" value="Submit" />
+                        </td>
+                    </tr>
+                </table>        
             </form>
-            <form action="/logout" method="get">
-                <input type="submit" id="cancel" name="cancel" value="Cancel" />
+            <form action="/logout" method="get" class="mainlogin" style="margin-top:0">
+                <table class="table">
+                    <tr>
+                        <td colspan="2">
+                        <div>
+                            <input type="submit" id="cancel" name="cancel" class="red button" style="width:100%" value="Cancel" />
+                        </div>
+                        </td>
+                    </tr>
+                </table>
             </form>
         </div>
     </body>
